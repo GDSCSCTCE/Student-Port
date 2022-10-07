@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sct_lab">
+    package="com.gdscsct.sctlab">
    <application
         android:label="sct_lab"
         android:name="${applicationName}"

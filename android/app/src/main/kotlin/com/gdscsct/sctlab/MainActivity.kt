@@ -1,4 +1,4 @@
-package com.example.sct_lab
+package com.gdscsct.sctlab
 
 import io.flutter.embedding.android.FlutterActivity
 
