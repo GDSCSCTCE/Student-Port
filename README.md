@@ -1,11 +1,16 @@
-<a href="https://flutter.dev/">
+<a>
   <h1 align="center">
-    <img src="https://user-images.githubusercontent.com/96013756/195433701-f425b0b1-dbff-4c98-abf9-86218e5c5b9c.png" alt="Sct-Lab" width="400" height="500">
+    <img src="https://user-images.githubusercontent.com/96013756/195433701-f425b0b1-dbff-4c98-abf9-86218e5c5b9c.png" alt="Sct-Lab" width="500" height="500">
     </img>
   </h1>
 </a>
 
-[![Twitter handle][]][Twitter badge]
+[![GDSC handle][]][GDSC badge]
+[<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" width=75 height=20>](https://twitter.com/GDSC_SCTCE)
+[<img src="https://img.shields.io/badge/twitter-%231DA1F2.svg?&style=for-the-badge&logo=twitter&logoColor=white" width=75 height=20>](https://www.linkedin.com/company/gdsc-sctce)
+[<img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" width=85 height=20>](https://www.instagram.com/gdscsctce)
+[<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" width=75 height=20>](https://github.com/GDSC-SCTCE)
+[<img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" width=70 height=20>](https://mail.google.com/mail/?view=cm&fs=1&to=gdscsctce@gmail.com)
 
 # SCT-LAB
 
@@ -161,3 +166,8 @@ This is the starting point of the application. All the application level configu
 
 We will be happy to answer any questions that you may have on this approach, and if you want to lend a hand with this project then please feel free to submit an issue and/or pull request
 
+[flutter.dev]: https://flutter.dev
+[GDSC badge]: https://gdsc.community.dev/sree-chitra-thirunal-college-of-engineering-thiruvananthapuram/
+[GDSC handle]: https://img.shields.io/website?down_color=lightgrey&down_message=offline&label=Website&style=flat-square&up_message=live&url=https%3A%2F%2Fgdsc.community.dev%2Fsree-chitra-thirunal-college-of-engineering-thiruvananthapuram%2F
+[Dart platform]: https://dart.dev/
+[Flutter packages]: https://pub.dev/flutter
