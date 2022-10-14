@@ -6,8 +6,8 @@
 </a>
 
 [![GDSC handle][]][GDSC badge]
-[<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" width=75 height=20>](https://twitter.com/GDSC_SCTCE)
-[<img src="https://img.shields.io/badge/twitter-%231DA1F2.svg?&style=for-the-badge&logo=twitter&logoColor=white" width=75 height=20>](https://www.linkedin.com/company/gdsc-sctce)
+[<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" width=75 height=20>](https://www.linkedin.com/company/gdsc-sctce)
+[<img src="https://img.shields.io/badge/twitter-%231DA1F2.svg?&style=for-the-badge&logo=twitter&logoColor=white" width=75 height=20>](https://twitter.com/GDSC_SCTCE)
 [<img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" width=85 height=20>](https://www.instagram.com/gdscsctce)
 [<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" width=75 height=20>](https://github.com/GDSC-SCTCE)
 [<img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" width=70 height=20>](https://mail.google.com/mail/?view=cm&fs=1&to=gdscsctce@gmail.com)
