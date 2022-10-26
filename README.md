@@ -12,7 +12,7 @@
 [<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" width=75 height=20>](https://github.com/GDSC-SCTCE)
 [<img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" width=70 height=20>](https://mail.google.com/mail/?view=cm&fs=1&to=gdscsctce@gmail.com)
 
-# SCT-LAB
+# Student-Portal
 
 Sct-Lab is an open-source alternative for Etlab. This was set in motion because we wanted to create a convenient and free to use system for the updation and management of student details in various institutions since Etlab is a paid application and is not convenient for everyone.
 
