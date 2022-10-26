@@ -12,9 +12,9 @@
 [<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" width=75 height=20>](https://github.com/GDSC-SCTCE)
 [<img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" width=70 height=20>](https://mail.google.com/mail/?view=cm&fs=1&to=gdscsctce@gmail.com)
 
-# Student-Portal
+# Student-Port
 
-Student-Portal is an open-source alternative for Etlab. This was set in motion because we wanted to create a convenient and free to use system for the updation and management of student details in various institutions since Etlab is a paid application and is not convenient for everyone.
+Student-Port is an open-source alternative for Etlab. This was set in motion because we wanted to create a convenient and free to use system for the updation and management of student details in various institutions since Etlab is a paid application and is not convenient for everyone.
 
 ## About Etlab
 
@@ -25,7 +25,7 @@ Etlab is a campus management system from the team of Etuwa Concepts Pvt. Ltd. Et
 **Step 1:** Download or clone this repo by using the link below:
 
 ```
-https://github.com/GDSCSCTCE/Student-portal.git
+https://github.com/GDSCSCTCE/Student-Port.git
 ```
 
 **Step 2:** Go to project root and execute the following command in console to get the required dependencies: 
