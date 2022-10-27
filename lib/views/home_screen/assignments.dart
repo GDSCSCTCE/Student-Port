@@ -1,6 +1,5 @@
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:sizer/sizer.dart';
 
 class Assignment extends StatefulWidget {
@@ -11,52 +10,88 @@ class Assignment extends StatefulWidget {
 }
 
 class _AssignmentState extends State<Assignment> {
-  static final ASSMNT_CONTENT = [
+  static final assmtContent = [
     {
       'id': 1,
       'course': 'Course 1',
       'name': 'Assignament-1',
-      'isssue': DateTime(2022, 10, 5),
+      'issue': DateTime(2022, 10, 5),
       'last': DateTime(2022, 10, 6),
-      'issubmit': false,
+      'issubmitted': false,
+      'sem': 'IIIrd Semester',
     },
     {
       'id': 2,
       'course': 'Course 2',
       'name': 'Assignament-1',
-      'isssue': DateTime(2022, 10, 5),
+      'issue': DateTime(2022, 10, 5),
       'last': DateTime(2022, 10, 6),
-      'issubmit': true,
+      'issubmitted': true,
+      'sem': 'IIIrd Semester',
     },
     {
       'id': 3,
       'course': 'Course 3',
       'name': 'Assignament-1',
-      'isssue': DateTime(2022, 10, 5),
+      'issue': DateTime(2022, 10, 5),
       'last': DateTime(2022, 10, 6),
       'issubmitted': false,
+      'sem': 'IIIrd Semester',
     },
   ];
 
   Card _asmtCard(Map a) {
-    return a['issubmitted']
-        ? Card(
-            color: Colors.green,
-          )
-        : Card(
-            color: Colors.red,
-          );
+    return Card(
+      elevation: 5,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(8))),
+      child: Row(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+                color: a['issubmitted'] ? Colors.green : Colors.red,
+                borderRadius:
+                    const BorderRadius.horizontal(left: Radius.circular(8))),
+            height: 20.h,
+            width: 10,
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(child: Text(a['course'])),
+                  const Divider(),
+                  Text(a['name']),
+                  const SizedBox(height: 8),
+                  Text(a['sem']),
+                  const Divider(),
+                  Text(
+                      'Issued On:${DateFormat('dd/mm/yyyy HH:MM:SS').format(a['issue'])}'),
+                  const SizedBox(height: 8),
+                  Text(
+                    style: const TextStyle(color: Colors.red),
+                    'Issued On:${DateFormat('dd/mm/yyyy HH:MM:SS').format(a['last'])}',
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   AppBar _asmntAppBar() {
     return AppBar(
       elevation: 5,
       leading: const Icon(Icons.menu),
-      title: Text('Assignment'),
+      title: const Text('Assignment'),
       centerTitle: true,
       actions: [
-        IconButton(onPressed: () {}, icon: Icon(Icons.sort)),
-        IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.sort)),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
       ],
     );
   }
@@ -71,15 +106,15 @@ class _AssignmentState extends State<Assignment> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Expanded(
-                child: SizedBox(
-                  height: 23.h,
-                ),
+              ListView.builder(
+                itemCount: assmtContent.length,
+                itemBuilder: (context, idx) {
+                  return _asmtCard(assmtContent[idx]);
+                },
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
               ),
-              ListView.builder(itemBuilder: (context, idx) {
-                return _asmtCard(ASSMNT_CONTENT[idx]);
-              }),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
             ],

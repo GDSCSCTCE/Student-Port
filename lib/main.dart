@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: ThemeData(
           textTheme: TextTheme(
-            headline1: GoogleFonts.poppins(color: Color(0xff212121)),
+            headline1: GoogleFonts.poppins(color: const Color(0xff212121)),
           ),
         ),
         home: const SplashScreen(),

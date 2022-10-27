@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:sct_lab/views/home_screen/assignments.dart';
 import 'package:sizer/sizer.dart';
-import 'package:flutter/cupertino.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  static const CONTENT_LABELS = [
+  static const contentLabel = [
     'Activity',
     'Analysis',
     'Certificate Request',
@@ -23,75 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
     'Dues',
     'Exam Schedule'
   ];
-
-  List<BottomNavigationBarItem> _getBottomNavBarItems() {
-    return [
-      BottomNavigationBarItem(
-        icon: Icon(
-          Icons.home,
-          color: Colors.grey[600],
-        ),
-        label: "Home",
-        activeIcon: Icon(
-          Icons.home,
-          color: Colors.blue,
-        ),
-      ),
-      BottomNavigationBarItem(
-        icon: Icon(
-          Icons.assignment,
-          color: Colors.grey[600],
-          size: 20,
-        ),
-        label: "Assignments",
-        activeIcon: Icon(
-          Icons.assignment,
-          color: Colors.blue,
-          size: 20,
-        ),
-      ),
-      BottomNavigationBarItem(
-        icon: Icon(
-          Icons.my_library_books,
-          color: Colors.grey[600],
-        ),
-        label: "Study Materials",
-        activeIcon: Icon(
-          Icons.my_library_books,
-          color: Colors.blue,
-        ),
-      ),
-      BottomNavigationBarItem(
-        icon: Icon(
-          Icons.notifications,
-          color: Colors.grey[600],
-        ),
-        label: "Notice Board",
-        activeIcon: Icon(
-          Icons.notifications,
-          color: Colors.blue,
-        ),
-      ),
-    ];
-  }
-
-  Widget _bottomNavigationSheet() {
-    return BottomNavigationBar(
-      currentIndex: 0,
-      backgroundColor: const Color(0xfffbfbfb),
-      elevation: 0,
-      selectedLabelStyle: GoogleFonts.poppins(color: Color(0xff212121)),
-      unselectedLabelStyle: GoogleFonts.poppins(color: Color(0xff212121)),
-      onTap: (int index) {
-        switch (index) {
-          case 1:
-            Navigator.pushReplacement(context,
-                CupertinoPageRoute(builder: (builder) => const Assignment()));
-        }
-      },
-      items: _getBottomNavBarItems(),
-    );
-  }
 
   Widget _getAppBar() {
     return Container(
@@ -113,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       child: Text(
         "Arakkal Abu".toUpperCase(),
-        style: TextStyle(color: Colors.white, fontSize: 25),
+        style: const TextStyle(color: Colors.white, fontSize: 25),
       ),
     );
   }
@@ -157,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             circularStrokeCap: CircularStrokeCap.round,
-            progressColor: Color(0xff97CB43),
+            progressColor: const Color(0xff97CB43),
             backgroundColor: Colors.white,
           ),
         ],
@@ -188,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         addAutomaticKeepAlives: true,
         itemCount: 8,
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {},
@@ -196,9 +124,9 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Image.asset("assets/home_screen/cont_$index.png"),
                 Text(
-                  CONTENT_LABELS[index],
+                  contentLabel[index],
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w600,
                     fontSize: 15,
@@ -214,33 +142,30 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        alignment: Alignment.topCenter,
-        fit: StackFit.loose,
-        children: [
-          _getAppBar(),
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  SizedBox(
-                    height: 23.h,
-                  ),
-                  _getAttendanceCard(),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  _getMainContentCard()
-                ],
-              ),
+    return Stack(
+      alignment: Alignment.topCenter,
+      fit: StackFit.loose,
+      children: [
+        _getAppBar(),
+        SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                SizedBox(
+                  height: 23.h,
+                ),
+                _getAttendanceCard(),
+                const SizedBox(
+                  height: 20,
+                ),
+                _getMainContentCard()
+              ],
             ),
-          )
-        ],
-      ),
-      bottomNavigationBar: _bottomNavigationSheet(),
+          ),
+        )
+      ],
     );
   }
 }

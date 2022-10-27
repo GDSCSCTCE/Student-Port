@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sct_lab/views/home_screen/home_screen.dart';
 import 'package:sizer/sizer.dart';
+
+import 'package:sct_lab/views/home_screen/bottom.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -19,11 +20,11 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _pushToHome() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
 
     if (mounted) {
-      Navigator.pushReplacement(context,
-          CupertinoPageRoute(builder: (builder) => const HomeScreen()));
+      Navigator.pushReplacement(
+          context, CupertinoPageRoute(builder: (builder) => const Bottom()));
     }
   }
 
@@ -45,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'sctlab',
                 style: TextStyle(
                     fontSize: 30,
@@ -55,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
               SizedBox(
                 height: 30.h,
               ),
-              CupertinoActivityIndicator(
+              const CupertinoActivityIndicator(
                 color: Colors.white,
                 radius: 15,
               ),
