@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:sct_lab/views/home_screen/assignments.dart';
 import 'package:sizer/sizer.dart';
+import 'package:flutter/cupertino.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -80,7 +82,13 @@ class _HomeScreenState extends State<HomeScreen> {
       elevation: 0,
       selectedLabelStyle: GoogleFonts.poppins(color: Color(0xff212121)),
       unselectedLabelStyle: GoogleFonts.poppins(color: Color(0xff212121)),
-      onTap: (int index) {},
+      onTap: (int index) {
+        switch (index) {
+          case 1:
+            Navigator.pushReplacement(context,
+                CupertinoPageRoute(builder: (builder) => const Assignment()));
+        }
+      },
       items: _getBottomNavBarItems(),
     );
   }
