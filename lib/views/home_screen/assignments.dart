@@ -40,6 +40,24 @@ class _AssignmentState extends State<Assignment> {
     },
   ];
 
+  Widget gButton(txt, icn) {
+    return Expanded(
+      child: TextButton.icon(
+          style: TextButton.styleFrom(
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            minimumSize: Size.fromHeight(3.5.h),
+            padding: EdgeInsets.zero,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(500)),
+            backgroundColor: Colors.green,
+            foregroundColor: Colors.white,
+          ),
+          onPressed: () {},
+          icon: icn,
+          label: txt),
+    );
+  }
+
   Card _asmtCard(Map a) {
     return Card(
       elevation: 5,
@@ -52,7 +70,7 @@ class _AssignmentState extends State<Assignment> {
                 color: a['issubmitted'] ? Colors.green : Colors.red,
                 borderRadius:
                     const BorderRadius.horizontal(left: Radius.circular(8))),
-            height: 20.h,
+            height: 28.h,
             width: 10,
           ),
           Expanded(
@@ -62,18 +80,56 @@ class _AssignmentState extends State<Assignment> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(child: Text(a['course'])),
-                  const Divider(),
+                  const Divider(thickness: 1.5),
                   Text(a['name']),
                   const SizedBox(height: 8),
                   Text(a['sem']),
-                  const Divider(),
+                  const Divider(thickness: 1.5),
                   Text(
-                      'Issued On:${DateFormat('dd/mm/yyyy HH:MM:SS').format(a['issue'])}'),
+                      'Issued On: ${DateFormat('dd/mm/yyyy HH:mm:ss').format(a['issue'])}'),
                   const SizedBox(height: 8),
                   Text(
                     style: const TextStyle(color: Colors.red),
-                    'Issued On:${DateFormat('dd/mm/yyyy HH:MM:SS').format(a['last'])}',
-                  )
+                    'Issued On: ${DateFormat('dd/mm/yyyy HH:mm:ss').format(a['last'])}',
+                  ),
+                  const SizedBox(height: 4),
+                  a['issubmitted']
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            gButton(Text('View Submition'), Text('')),
+                            SizedBox(
+                              width: 4,
+                            ),
+                            gButton(Text('Open'), Text(''))
+                          ],
+                        )
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            gButton(Text('Upload'), Icon(Icons.arrow_upward)),
+                            SizedBox(
+                              width: 4,
+                            ),
+                            gButton(Text('Open'), Text(''))
+                          ],
+                        ),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  a['issubmitted']
+                      ? TextButton(
+                          style: TextButton.styleFrom(
+                              minimumSize: Size.fromHeight(3.5.h),
+                              padding: EdgeInsets.zero,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(500)),
+                              backgroundColor: Colors.red,
+                              foregroundColor: Colors.white,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap),
+                          onPressed: () {},
+                          child: Text('Delete Submission'))
+                      : Container(),
                 ],
               ),
             ),
@@ -85,7 +141,7 @@ class _AssignmentState extends State<Assignment> {
 
   AppBar _asmntAppBar() {
     return AppBar(
-      elevation: 5,
+      elevation: 2,
       leading: const Icon(Icons.menu),
       title: const Text('Assignment'),
       centerTitle: true,
@@ -106,7 +162,10 @@ class _AssignmentState extends State<Assignment> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              ListView.builder(
+              ListView.separated(
+                separatorBuilder: (context, index) => SizedBox(
+                  height: 10,
+                ),
                 itemCount: assmtContent.length,
                 itemBuilder: (context, idx) {
                   return _asmtCard(assmtContent[idx]);
