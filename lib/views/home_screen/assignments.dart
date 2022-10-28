@@ -97,24 +97,26 @@ class _AssignmentState extends State<Assignment> {
                       ? Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            gButton(Text('View Submition'), Text('')),
-                            SizedBox(
+                            gButton(
+                                const Text('View Submition'), const Text('')),
+                            const SizedBox(
                               width: 4,
                             ),
-                            gButton(Text('Open'), Text(''))
+                            gButton(const Text('Open'), const Text(''))
                           ],
                         )
                       : Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            gButton(Text('Upload'), Icon(Icons.arrow_upward)),
-                            SizedBox(
+                            gButton(const Text('Upload'),
+                                const Icon(Icons.arrow_upward)),
+                            const SizedBox(
                               width: 4,
                             ),
-                            gButton(Text('Open'), Text(''))
+                            gButton(const Text('Open'), const Text(''))
                           ],
                         ),
-                  SizedBox(
+                  const SizedBox(
                     height: 4,
                   ),
                   a['issubmitted']
@@ -128,7 +130,7 @@ class _AssignmentState extends State<Assignment> {
                               foregroundColor: Colors.white,
                               tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                           onPressed: () {},
-                          child: Text('Delete Submission'))
+                          child: const Text('Delete Submission'))
                       : Container(),
                 ],
               ),
@@ -163,7 +165,7 @@ class _AssignmentState extends State<Assignment> {
             mainAxisSize: MainAxisSize.max,
             children: [
               ListView.separated(
-                separatorBuilder: (context, index) => SizedBox(
+                separatorBuilder: (context, index) => const SizedBox(
                   height: 10,
                 ),
                 itemCount: assmtContent.length,

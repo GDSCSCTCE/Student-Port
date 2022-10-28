@@ -145,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
           backgroundColor:
               e == _timeTableDay ? Colors.green : Colors.blueAccent,
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          shape: CircleBorder(side: BorderSide.none)),
+          shape: const CircleBorder(side: BorderSide.none)),
       onPressed: () {
         setState(() {
           _timeTableDay = e;
@@ -183,7 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           SizedBox(
@@ -191,19 +191,32 @@ class _HomeScreenState extends State<HomeScreen> {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 6,
-              physics: PageScrollPhysics(),
+              physics: const PageScrollPhysics(),
               itemBuilder: (context, index) => Card(
                   elevation: 3,
                   color: Colors.blue[700],
-                  child: Container(
-                    alignment: Alignment.center,
-                    width: 80.w,
-                    child: Text(
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                        timeTable[_timeTableDay]![index]),
+                  child: Stack(
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        width: 80.w,
+                        child: Text(
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            timeTable[_timeTableDay]![index]),
+                      ),
+                      Container(
+                          margin: EdgeInsets.all(12),
+                          child: Container(
+                              child: Text(
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                  (index + 1).toString())))
+                    ],
                   )),
             ),
           )
