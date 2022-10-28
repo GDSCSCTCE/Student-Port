@@ -10,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  static const contentLabel = [
+  final contentLabel = [
     'Activity',
     'Analysis',
     'Certificate Request',
@@ -20,6 +20,51 @@ class _HomeScreenState extends State<HomeScreen> {
     'Dues',
     'Exam Schedule'
   ];
+
+  Map<String, List<String>> timeTable = {
+    'M': [
+      'Course 1',
+      'Course 2',
+      'Course 1',
+      'Course 4',
+      'Course 5',
+      'Course 6',
+    ],
+    'T': [
+      'Course 1',
+      'Course 2',
+      'Course 1',
+      'Course 4',
+      'Course 5',
+      'Course 6',
+    ],
+    'W': [
+      'Course 1',
+      'Course 2',
+      'Course 1',
+      'Course 4',
+      'Course 5',
+      'Course 6',
+    ],
+    'Th': [
+      'Course 1',
+      'Course 2',
+      'Course 1',
+      'Course 4',
+      'Course 5',
+      'Course 6',
+    ],
+    'F': [
+      'Course 1',
+      'Course 2',
+      'Course 1',
+      'Course 4',
+      'Course 5',
+      'Course 6',
+    ],
+  };
+
+  var _timeTableDay = 'M';
 
   Widget _getAppBar() {
     return Container(
@@ -52,13 +97,14 @@ class _HomeScreenState extends State<HomeScreen> {
       alignment: Alignment.center,
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
       decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(10)),
         boxShadow: [
           BoxShadow(
-            blurRadius: 5.0,
+            color: Colors.grey,
+            blurRadius: 5,
           )
         ],
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -93,20 +139,93 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  ElevatedButton _dayButton(e) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+          backgroundColor:
+              e == _timeTableDay ? Colors.green : Colors.blueAccent,
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          shape: CircleBorder(side: BorderSide.none)),
+      onPressed: () {
+        setState(() {
+          _timeTableDay = e;
+        });
+      },
+      child: Text(e),
+    );
+  }
+
+  Widget _getTimeTablecard() {
+    return Container(
+      width: double.infinity,
+      alignment: Alignment.center,
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+      decoration: const BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            blurRadius: 5,
+          )
+        ],
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ButtonBar(
+                buttonPadding: EdgeInsets.zero,
+                alignment: MainAxisAlignment.center,
+                children: [...timeTable.keys.map((e) => _dayButton(e))],
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 8,
+          ),
+          SizedBox(
+            height: 100,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 6,
+              physics: PageScrollPhysics(),
+              itemBuilder: (context, index) => Card(
+                  elevation: 3,
+                  color: Colors.blue[700],
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 80.w,
+                    child: Text(
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                        timeTable[_timeTableDay]![index]),
+                  )),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
   Widget _getMainContentCard() {
     return Container(
       width: double.infinity,
       alignment: Alignment.center,
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
       decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 5.0,
-          )
-        ],
-      ),
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey,
+              blurRadius: 5,
+            )
+          ]),
       child: GridView.builder(
         shrinkWrap: true,
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
@@ -157,6 +276,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 23.h,
                 ),
                 _getAttendanceCard(),
+                const SizedBox(
+                  height: 20,
+                ),
+                _getTimeTablecard(),
                 const SizedBox(
                   height: 20,
                 ),
