@@ -91,6 +91,24 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  Widget _wButton(txt) {
+    return Expanded(
+      child: TextButton(
+        style: TextButton.styleFrom(
+          elevation: 2,
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          minimumSize: Size.fromHeight(3.5.h),
+          padding: EdgeInsets.zero,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(500)),
+          backgroundColor: Colors.white,
+        ),
+        onPressed: () {},
+        child: Text(txt),
+      ),
+    );
+  }
+
   Widget _getAttendanceCard() {
     return Container(
       width: double.infinity,
@@ -208,14 +226,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             timeTable[_timeTableDay]![index]),
                       ),
                       Container(
-                          margin: EdgeInsets.all(12),
-                          child: Container(
-                              child: Text(
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                  (index + 1).toString())))
+                          margin: const EdgeInsets.all(12),
+                          child: Text(
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                              (index + 1).toString()))
                     ],
                   )),
             ),
@@ -288,13 +305,25 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 23.h,
                 ),
+                Row(
+                  children: [
+                    _wButton('VISION'),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    _wButton('MISSION')
+                  ],
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
                 _getAttendanceCard(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 _getTimeTablecard(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 _getMainContentCard()
               ],
