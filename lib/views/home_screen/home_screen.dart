@@ -66,7 +66,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   var _timeTableDay = 'M';
 
-  Widget _getAppBar() {
+  bool _profileSection = false;
+
+  TextStyle _profileStyle() {
+    return TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.w500,
+      fontSize: 18,
+    );
+  }
+
+  Widget _getBgElp() {
     return Container(
       height: 30.h,
       width: double.infinity,
@@ -84,11 +94,52 @@ class _HomeScreenState extends State<HomeScreen> {
             bottom:
                 Radius.elliptical(MediaQuery.of(context).size.width, 200.0)),
       ),
-      child: Text(
-        "Arakkal Abu".toUpperCase(),
-        style: const TextStyle(color: Colors.white, fontSize: 25),
-      ),
     );
+  }
+
+  Widget _profile() {
+    return Container(
+        padding: EdgeInsets.symmetric(horizontal: 8),
+        child: Row(
+          children: [
+            CircleAvatar(
+              radius: 39,
+              backgroundColor: Colors.white,
+              child: CircleAvatar(
+                radius: 35,
+                backgroundColor: Colors.white,
+                foregroundImage: AssetImage('assets/arakkal.jpg'),
+              ),
+            ),
+            SizedBox(width: 20),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Roll No: 000',
+                    style: _profileStyle(),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    'IIIrd Semester',
+                    style: _profileStyle(),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    'Computer Science-2021',
+                    style: _profileStyle(),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ));
   }
 
   Widget _wButton(txt) {
@@ -291,46 +342,82 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.topCenter,
-      fit: StackFit.loose,
-      children: [
-        _getAppBar(),
-        SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                SizedBox(
-                  height: 23.h,
-                ),
-                Row(
-                  children: [
-                    _wButton('VISION'),
-                    const SizedBox(
-                      width: 8,
+    return Scaffold(
+      body: Stack(
+        alignment: Alignment.topCenter,
+        fit: StackFit.loose,
+        children: [
+          _getBgElp(),
+          SafeArea(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  AppBar(
+                      leading: const IconButton(
+                          onPressed: null, icon: Icon(Icons.menu)),
+                      elevation: 0,
+                      backgroundColor: Colors.transparent,
+                      centerTitle: true,
+                      title: const Text(
+                        'Arakkal Abu',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        _profileSection
+                            ? _profile()
+                            : SizedBox(
+                                height: 0,
+                              ),
+                        IconButton(
+                            onPressed: () {
+                              setState(() {
+                                if (_profileSection) {
+                                  _profileSection = false;
+                                } else {
+                                  _profileSection = true;
+                                }
+                              });
+                            },
+                            icon: Icon(
+                                size: 30,
+                                color: Colors.white,
+                                _profileSection
+                                    ? Icons.keyboard_arrow_up
+                                    : Icons.keyboard_arrow_down)),
+                        Row(
+                          children: [
+                            _wButton('VISION'),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            _wButton('MISSION')
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 12,
+                        ),
+                        _getAttendanceCard(),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        _getTimeTablecard(),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        _getMainContentCard()
+                      ],
                     ),
-                    _wButton('MISSION')
-                  ],
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
-                _getAttendanceCard(),
-                const SizedBox(
-                  height: 15,
-                ),
-                _getTimeTablecard(),
-                const SizedBox(
-                  height: 15,
-                ),
-                _getMainContentCard()
-              ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 }

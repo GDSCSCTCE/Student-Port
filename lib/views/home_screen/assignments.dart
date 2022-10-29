@@ -144,7 +144,7 @@ class _AssignmentState extends State<Assignment> {
   AppBar _asmntAppBar() {
     return AppBar(
       elevation: 2,
-      leading: const Icon(Icons.menu),
+      leading: const IconButton(onPressed: null, icon: Icon(Icons.menu)),
       title: const Text('Assignment'),
       centerTitle: true,
       actions: [
